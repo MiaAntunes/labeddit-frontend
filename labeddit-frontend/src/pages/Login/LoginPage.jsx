@@ -1,32 +1,32 @@
 import { Button } from "../../components/Button/Button";
 import { InputForm } from "../../components/InputForm/InputForm";
 import { StatusBar } from "../../components/StatusBar/StatusBar";
+import logoHeader from "../../assets/logoLogin.png"
 
 export const LoginPage = () => {
   return (
     <>
       <StatusBar />
       <div>
-        <img src="" alt="" />
-        <h1>LabEddit</h1>
+        <img src={logoHeader} alt="Logo da LabEddit" />
         <p>O projeto de rede social da Labenu</p>
       </div>
       <form action="" onSubmit="{}">
         <InputForm
           type="text"
-          name=""
-          id=""
+          name="email"
+          id="email"
           value=""
           onChange=""
-          placeholder=""
+          placeholder="E-mail"
         />
         <InputForm
           type="text"
-          name=""
-          id=""
+          name="password"
+          id="password"
           value=""
           onChange=""
-          placeholder=""
+          placeholder="Senha"
         />
         <Button
         title="Continuar" />
