@@ -1,3 +1,4 @@
+import { ButtonContainer } from "./ButtonStyled"
 
 
 
@@ -5,7 +6,7 @@ export const Button = (props)=>{
 
     return(
         <>
-        <button title="">{}</button>
+        <ButtonContainer title="">{props.title}</ButtonContainer>
         </>
     )
 }
