@@ -2,8 +2,7 @@ import { Button } from "../../components/Button/Button"
 import { Header } from "../../components/Header/Header"
 import { InputForm } from "../../components/InputForm/InputForm"
 import { StatusBar } from "../../components/StatusBar/StatusBar"
-
-
+import { FormSignUp, LinkContractSignUp, MainSignUp, ParagraphSignUp, TitleSignUp } from "./SignUpPageStyled"
 
 
 export const SignUpPage = () =>{
@@ -12,9 +11,9 @@ export const SignUpPage = () =>{
         <>
              <StatusBar/>
              <Header title="Entrar"/>
-             <main>
-                <h1>Olá, boas vindas ao LabEddit ;) </h1>
-                <form action="" onSubmit="{}">
+             <MainSignUp>
+                <TitleSignUp>Olá, boas vindas ao LabEddit ;) </TitleSignUp>
+                <FormSignUp action="" onSubmit="{}">
 
                     <InputForm 
                     type="text" 
@@ -40,15 +39,15 @@ export const SignUpPage = () =>{
                     onChange=""
                     placeholder=""/>
 
-                    <p>Ao continuar você concorda com o nosso <a href="#">Contrato de usuário</a> e a nossa <a href="">Política de Privacidade</a></p>
+                    <ParagraphSignUp>Ao continuar você concorda com o nosso <LinkContractSignUp href="#">Contrato de usuário</LinkContractSignUp> e a nossa <LinkContractSignUp href="">Política de Privacidade</LinkContractSignUp></ParagraphSignUp>
 
                     <InputForm 
                     type="radio?" /> //dúvidas
 
                     <Button
                     title="Cadastrar" />
-                </form>
-             </main>
+                </FormSignUp>
+             </MainSignUp>
         </>
     )
 }

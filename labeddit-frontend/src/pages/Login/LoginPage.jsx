@@ -2,16 +2,17 @@ import { Button } from "../../components/Button/Button";
 import { InputForm } from "../../components/InputForm/InputForm";
 import { StatusBar } from "../../components/StatusBar/StatusBar";
 import logoHeader from "../../assets/logoLogin.png"
+import { ContainerLogo, Form, LogoImg, Paragraph } from "./LoginPageStyled";
 
 export const LoginPage = () => {
   return (
     <>
       <StatusBar />
-      <div>
-        <img src={logoHeader} alt="Logo da LabEddit" />
-        <p>O projeto de rede social da Labenu</p>
-      </div>
-      <form action="" onSubmit="{}">
+      <ContainerLogo>
+        <LogoImg src={logoHeader} alt="Logo da LabEddit" />
+        <Paragraph>O projeto de rede social da Labenu</Paragraph>
+      </ContainerLogo>
+      <Form action="" onSubmit="{}">
         <InputForm
           type="text"
           name="email"
@@ -33,7 +34,7 @@ export const LoginPage = () => {
         <hr />
         <Button
         title="Crie uma conta!" />
-      </form>
+      </Form>
     </>
   );
 };

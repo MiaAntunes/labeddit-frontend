@@ -3,15 +3,18 @@ import { Button } from "../../components/Button/Button";
 import { Header } from "../../components/Header/Header";
 import { Post } from "../../components/Post/Post";
 import { StatusBar } from "../../components/StatusBar/StatusBar";
+import { FormCreatePost, Line, MainHome, SectionAllPost, SectionCreatePost } from "./HomePageStyled";
 
 export const HomePage = () => {
+
+  // ! Confirmar e revisar a semântica do HTML
   return (
     <>
       <StatusBar />
       <Header title="Logout"/>
-      <main>
-        <section>
-          <form action="" onSubmit="{}">
+      <MainHome>
+        <SectionCreatePost>
+          <FormCreatePost action="" onSubmit="{}">
 
             <BoxText 
             for="post"
@@ -20,10 +23,10 @@ export const HomePage = () => {
             <Button 
             title="Postar" />
 
-          </form>
-        </section>
-        <hr />
-        <section>
+          </FormCreatePost>
+        </SectionCreatePost>
+        <Line />
+        <SectionAllPost>
 
           {/* Fazer um map de todos as postagens */}
           <Post 
@@ -33,8 +36,8 @@ export const HomePage = () => {
           deslike="" 
           comentário="" />
 
-        </section>
-      </main>
+        </SectionAllPost>
+      </MainHome>
     </>
   );
 };
