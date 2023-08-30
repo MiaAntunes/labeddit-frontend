@@ -1,41 +1,76 @@
+import axios from "axios";
 import { BoxText } from "../../components/Box Text/BoxText";
-import { Button } from "../../components/Button/Button";
 import { Header } from "../../components/Header/Header";
 import { Post } from "../../components/Post/Post";
 import { StatusBar } from "../../components/StatusBar/StatusBar";
-import { FormCreatePost, Line, MainHome, SectionAllPost, SectionCreatePost } from "./HomePageStyled";
+import useForm from "../../hooks/useForm";
+import { useProtectPage } from "../../hooks/useProtectPage";
+import useRequestData from "../../hooks/useRequestData";
+import {
+  ButtonPostar,
+  FormCreatePost,
+  Line,
+  MainHome,
+  SectionAllPost,
+  SectionCreatePost,
+} from "./HomePageStyled";
+import { BASE_URL } from "../../contants/BaseUrl";
 
 export const HomePage = () => {
+  useProtectPage()
+  const token = localStorage.getItem('token')
+  
+  const [posts, receberDados, erro] = useRequestData([], '/posts', token)
 
-  // ! Confirmar e revisar a semântica do HTML
+  const { form, onChange, cleanFields } = useForm({
+    content: ""
+  });
+
+  const sendPost = (event) =>{
+    event.preventDefault();
+
+    const body = {
+      content: form.content
+    }
+
+    axios.post(`${BASE_URL}/posts`, body, {
+      headers: {
+        Authorization: token
+      }
+    })
+    .then((res) =>{
+      console.log("OK", res.data)
+      cleanFields()
+      receberDados()
+    })
+    .catch((error) =>{
+      console.log("error", error.data)
+    })
+  }
+
+
+
   return (
     <>
       <StatusBar />
-      <Header title="Logout"/>
+      <Header title="Logout" />
       <MainHome>
         <SectionCreatePost>
-          <FormCreatePost action="" onSubmit="{}">
-
-            <BoxText 
-            for="post"
-            name="post"
-            placeholder="Escreva seu post..." />
-            <Button 
-            title="Postar" />
-
+          <FormCreatePost onSubmit={sendPost}>
+            <BoxText for="content" name="content" value={form.content} onChange={onChange} placeholder="Escreva seu post..." />
+            <ButtonPostar type="submit">Postar</ButtonPostar>
           </FormCreatePost>
         </SectionCreatePost>
         <Line />
         <SectionAllPost>
+          {
+            posts.map((post, index)=>{
 
-          {/* Fazer um map de todos as postagens */}
-          <Post 
-          user="" 
-          content="" 
-          like="" 
-          deslike="" 
-          comentário="" />
-
+              return(
+                <Post key={index} post={post} />
+              )
+            })
+          }
         </SectionAllPost>
       </MainHome>
     </>

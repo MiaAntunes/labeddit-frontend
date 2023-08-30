@@ -11,5 +11,5 @@ export const goToHomePage = (navigate) => {
 }
 
 export const goToPostIdPage = (navigate, id) => {
-    return navigate(`/home/post/${id}`)
+    return navigate(`/post/${id}`)
 }

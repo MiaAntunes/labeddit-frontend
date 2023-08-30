@@ -11,7 +11,7 @@ export const Router = () =>{
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/home" element={<HomePage />} />
-            <Route path="/home/post/:id" element={<PostIdPage />} />
+            <Route path="/post/:id" element={<PostIdPage />} />
          </Routes>
         </BrowserRouter>
     )
