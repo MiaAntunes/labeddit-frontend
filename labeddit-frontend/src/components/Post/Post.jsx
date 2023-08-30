@@ -1,21 +1,32 @@
+import { useNavigate } from "react-router-dom";
+import { goToPostIdPage } from "../../router/coordinator";
 import { ButtonComments } from "../ButtonComment/ButtonComment";
 import { ButtonLike } from "../ButtonLike/ButtonLike";
+import { ContainerPost, LinkPostContainer, ParagraphContent, ParagraphUser } from "./PostStyled";
+import { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 
-export const Post = () => {
+export const Post = (props) => {
+  const navigate = useNavigate();
+  const context = useContext(GlobalContext)
+  const { eachPost, setEachPostId} = context
+  
+  const onClickGoToPostIdPage = (element) =>{
+    setEachPostId(element)
+    goToPostIdPage(navigate, element.idPost)
+  }
+
   return (
-    <article>
-      <a href="">
-        <p>Enviado por: {}</p>
-        {/* V Aqui será o content */}
-        <p>{}</p>
-
+    <ContainerPost >
+      <LinkPostContainer onClick={()=>onClickGoToPostIdPage(props.post)}>
+        <ParagraphUser>Enviado por: {props.post?.creator?.name}</ParagraphUser>
+        <ParagraphContent>{props.post.content}</ParagraphContent>
         <ButtonLike 
-        valueLike="" 
-        valueDeslike="" />
-        
+        valueLike={props.post.likes} 
+        valueDeslike={props.post.deslikes} />
         <ButtonComments 
-        valueComments="" />
-      </a>
-    </article>
+        valueComments={props.post.comments} />
+      </LinkPostContainer>
+    </ContainerPost>
   );
 };
