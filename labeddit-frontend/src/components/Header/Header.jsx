@@ -1,31 +1,37 @@
+import { useNavigate } from "react-router-dom"
+import logoHeader from "../../assets/logoHeader.png"
+import { goToLogin } from "../../router/coordinator"
+import { ButtonEntrar, ButtonExit, ButtonLogout, LogoHeader, Span } from "./HeaderStyled"
 
 
+export const Header = () => {
+  const navigate = useNavigate()
 
-export const Header = ()=>{
+  const onClickLogout = () =>{
+    localStorage.removeItem('token')
+  }
 
-    return(
-        <header>
-            {/* {location.pathname.includes("/post/")?:
-             } */}
+  // ! usar no buttonExit o goToHomePage
 
-        {/* {location.pathname.includes("detail") &&
-        (!findPokemon ? (
-          <ButtonDetail
-            backgroundColor="#33A4F5"
-            onClick={() => catchPokemon(props.pokemon.id)}
-          >
-           Adicionar a Pokedex
-          </ButtonDetail>
-        ) : (
-          <ButtonDetail
-            backgroundColor="#FF6262"
-            onClick={() => deletePokemonPokedexPage(props.pokemon.id)}
-          >
-            Remover da Pokedex
-          </ButtonDetail>
-        ))
-        } */}
+  return (
+    <Header>
+      {
+        location.pathname.includes("/post/") ?
+          <ButtonExit onClick="{ }">
+            <img src="" alt="" />
+          </ButtonExit>:
+          <Span></Span>
+      }
 
-        </header>
-    )
+      <LogoHeader src={logoHeader} alt="Logo da LabEddit" />
+
+      {
+        location.pathname.includes("/signup/") ?
+          <ButtonEntrar onClick={()=> goToLogin(navigate)}>Entrar</ButtonEntrar>
+          :
+          <ButtonLogout onClick={onClickLogout}>Logout</ButtonLogout>
+      }
+
+    </Header>
+  )
 }

@@ -24,8 +24,12 @@ export const Post = (props) => {
         <ButtonLike 
         valueLike={props.post.likes} 
         valueDeslike={props.post.deslikes} />
-        <ButtonComments 
-        valueComments={props.post.comments} />
+        {/* !! DÚVIDAAAAAA */}
+        {/* {
+          props.post.comments?  
+            <ButtonComments 
+          valueComments={props.post.comments} />
+        } */}
       </LinkPostContainer>
     </ContainerPost>
   );
