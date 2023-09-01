@@ -1,35 +1,43 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import useRequestLike from "../../hooks/useRequestLike";
 import { goToPostIdPage } from "../../router/coordinator";
 import { ButtonComments } from "../ButtonComment/ButtonComment";
 import { ButtonLike } from "../ButtonLike/ButtonLike";
-import { ContainerPost, LinkPostContainer, ParagraphContent, ParagraphUser } from "./PostStyled";
+import {
+  ContainerPost,
+  LinkPostContainer,
+  ParagraphContent,
+  ParagraphUser,
+} from "./PostStyled";
 import { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 
 export const Post = (props) => {
   const navigate = useNavigate();
-  const context = useContext(GlobalContext)
-  const { eachPost, setEachPostId} = context
-  
-  const onClickGoToPostIdPage = (element) =>{
-    setEachPostId(element)
-    goToPostIdPage(navigate, element.idPost)
-  }
+  const context = useContext(GlobalContext);
+  const { eachPost, setEachPostId } = context;
+  console.log(props);
+
+  const onClickGoToPostIdPage = (element) => {
+    setEachPostId(element);
+    goToPostIdPage(navigate, element.postId);
+  };
 
   return (
-    <ContainerPost >
-      <LinkPostContainer onClick={()=>onClickGoToPostIdPage(props.post)}>
+    <ContainerPost>
+      <LinkPostContainer onClick={() => onClickGoToPostIdPage(props.post)}>
         <ParagraphUser>Enviado por: {props.post?.creator?.name}</ParagraphUser>
         <ParagraphContent>{props.post.content}</ParagraphContent>
-        <ButtonLike 
-        valueLike={props.post.likes} 
-        valueDeslike={props.post.deslikes} />
-        {/* !! DÚVIDAAAAAA */}
-        {/* {
-          props.post.comments?  
-            <ButtonComments 
-          valueComments={props.post.comments} />
-        } */}
+        <div style={{ display: "flex" }}>
+          <ButtonLike
+            url="like"
+            id={props.post.postId}
+            receberDados={props.receberDados}
+            valueLike={props.post.likes}
+            valueDeslike={props.post.deslikes}
+          />
+          <ButtonComments valueComments={props.post.comments} />
+        </div>
       </LinkPostContainer>
     </ContainerPost>
   );

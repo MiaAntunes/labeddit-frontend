@@ -2,23 +2,21 @@ import  { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../contants/BaseUrl'
 
+export const useRequestLike = (estadoInicial, path, token) => {
 
-
-export const useRequestData = (estadoInicial, path, token) => {
-
-    const [dados, setDados] = useState(estadoInicial)
+    const [likes, setLike] = useState(estadoInicial)
     const [erro, setErro] = useState('')
     const [isLoading, setIsLoading] = useState(true);
 
-    const receberDados = () =>{
-        axios.get(`${BASE_URL}${path}`, {
+    const mandarDados = (like) =>{
+        axios.put(`${BASE_URL}${path}`, {like},  {
             headers:{
                 Authorization: token
             }
         })
         .then((resposta) => {
             setIsLoading(false);
-            setDados(resposta.data)
+            setLike(resposta.data)
         })
         .catch((erro) => {
             console.log(erro.response)
@@ -27,11 +25,8 @@ export const useRequestData = (estadoInicial, path, token) => {
         })
     }
     
-    useEffect(() => {
-        receberDados()
-    }, [path])
 
-    return [dados, receberDados, erro, isLoading]
+    return [likes, setLike, mandarDados, erro, isLoading]
 }
 
-export default useRequestData
+export default useRequestLike

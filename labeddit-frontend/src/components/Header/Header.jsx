@@ -1,37 +1,56 @@
-import { useNavigate } from "react-router-dom"
-import logoHeader from "../../assets/logoHeader.png"
-import { goToLogin } from "../../router/coordinator"
-import { ButtonEntrar, ButtonExit, ButtonLogout, LogoHeader, Span } from "./HeaderStyled"
-
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react"
+import logoHeader from "../../assets/logoHeader.png";
+import { goToHomePage, goToLogin } from "../../router/coordinator";
+import {
+  ButtonEntrar,
+  ButtonExit,
+  ButtonLogout,
+  HeaderContainer,
+  LogoHeader,
+  Span,
+} from "./HeaderStyled";
+import exitHeader from "../../assets/exitHeader.png";
+import { useProtectPage } from "../../hooks/useProtectPage";
 
 export const Header = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const onClickLogout = () =>{
-    localStorage.removeItem('token')
-  }
+  const onClickExitPostId = () => {
+    goToHomePage(navigate);
+  };
 
-  // ! usar no buttonExit o goToHomePage
+
+  const onClickLogout = () => {
+    localStorage.removeItem("token");
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      goToLogin(navigate);
+    }
+  }, [onClickLogout]);
+
 
   return (
-    <Header>
-      {
-        location.pathname.includes("/post/") ?
-          <ButtonExit onClick="{ }">
-            <img src="" alt="" />
-          </ButtonExit>:
-          <Span></Span>
-      }
+    <HeaderContainer>
+      {location.pathname.includes("/post/") ? (
+        <ButtonExit onClick={onClickExitPostId}>
+          <img src={exitHeader} alt="Botão para fechar a página do post" />
+        </ButtonExit>
+      ) : (
+        <Span></Span>
+      )}
 
       <LogoHeader src={logoHeader} alt="Logo da LabEddit" />
 
-      {
-        location.pathname.includes("/signup/") ?
-          <ButtonEntrar onClick={()=> goToLogin(navigate)}>Entrar</ButtonEntrar>
-          :
-          <ButtonLogout onClick={onClickLogout}>Logout</ButtonLogout>
-      }
-
-    </Header>
-  )
-}
+      {location.pathname.includes("user/signup/") ? (
+        <ButtonEntrar onClick={() => goToLogin(navigate)}>Entrar</ButtonEntrar>
+      ) : (
+        <ButtonLogout onClick={onClickLogout}>Logout</ButtonLogout>
+      )}
+    </HeaderContainer>
+  );
+};

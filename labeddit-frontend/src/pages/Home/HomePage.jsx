@@ -40,7 +40,7 @@ export const HomePage = () => {
     })
     .then((res) =>{
       console.log("OK", res.data)
-      cleanFields()
+      // cleanFields()
       receberDados()
     })
     .catch((error) =>{
@@ -48,12 +48,10 @@ export const HomePage = () => {
     })
   }
 
-
-
   return (
     <>
       <StatusBar />
-      <Header title="Logout" />
+      <Header />
       <MainHome>
         <SectionCreatePost>
           <FormCreatePost onSubmit={sendPost}>
@@ -67,7 +65,7 @@ export const HomePage = () => {
             posts.map((post, index)=>{
 
               return(
-                <Post key={index} post={post} />
+                <Post key={index} post={post} receberDados={receberDados} />
               )
             })
           }

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContainerPost = styled.article`
   width: 22em;
-  height: 9em;
+  height: 8em;
   border-radius: 0.75rem;
   border: 1px solid #e0e0e0;
   background: #fbfbfb;
@@ -14,11 +14,6 @@ export const LinkPostContainer = styled.section`
   width: 100%;
   border-radius: 0.75rem;
   padding: 1em;
-  display:flex;
-  overflow: hidden;
-  flex-direction: column;
-  justify-content: space-between;
-  z-index:0;
 `;
 
 export const ParagraphUser = styled.p`
