@@ -22,7 +22,7 @@ import { BASE_URL } from "../../contants/BaseUrl";
 export const LoginPage = () => {
   const navigate = useNavigate();
 
-  const { form, onChange } = useForm({
+  const { form, onChange, cleanFields } = useForm({
     email: "",
     password: "",
   });
@@ -39,7 +39,6 @@ export const LoginPage = () => {
       .post(`${BASE_URL}/user/login`, dadosUsuario)
       .then((res) => {
         localStorage.setItem('token', res.data.token)
-        cleanFields()
         goToHomePage(navigate)
       })
       .catch((error) => {

@@ -34,14 +34,14 @@ export const SignUpPage = () => {
       email: form.email,
       password: form.password,
     };
-    console.log(dadosUsuario)
+    console.log(dadosUsuario);
 
     //cadastrar os dados do User na API
     axios
       .post(`${BASE_URL}/user/signup`, dadosUsuario)
       .then((res) => {
-        console.log(res.data)
-        console.log("foi")
+        console.log(res.data);
+        console.log("foi");
       })
       .catch((error) => {
         console.log(error);
@@ -54,7 +54,7 @@ export const SignUpPage = () => {
       <Header title="Entrar" />
       <MainSignUp>
         <TitleSignUp>Olá, boas vindas ao LabEddit ;) </TitleSignUp>
-        <FormSignUp  onSubmit={sendSignUp}>
+        <FormSignUp onSubmit={sendSignUp}>
           <InputForm
             type="text"
             name="name"
@@ -93,7 +93,7 @@ export const SignUpPage = () => {
           </ParagraphSignUp>
           <FieldsetSignUp>
             <input type="checkbox" required />
-            <LabelSignUp >
+            <LabelSignUp>
               Eu concordo em receber emails sobre coisas legais no Labeddit
             </LabelSignUp>
           </FieldsetSignUp>

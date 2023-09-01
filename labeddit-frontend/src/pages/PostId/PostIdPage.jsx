@@ -6,15 +6,25 @@ import { ButtonResponse, FormCreatePost, Line, MainPostId, SectionAllPost, Secti
 import { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
 import useForm from "../../hooks/useForm";
+import useRequestData from "../../hooks/useRequestData";
+import { Comment } from "../../components/Comments/Comment";
+import axios from "axios";
+import { BASE_URL } from "../../contants/BaseUrl";
+import { useParams } from "react-router-dom";
 
 export const PostIdPage = () => {
   const context = useContext(GlobalContext)
   const { eachPost, setEachPostId} = context
-  console.log(eachPost)
+  const token = localStorage.getItem('token')
+  const params = useParams()
+
 
   const { form, onChange, cleanFields } = useForm({
     content: ""
   });
+
+  const [post, receberDados, erro, isLoading] = useRequestData({}, `/posts/${params.id}` , token)
+  console.log(form)
 
   const sendComment = (event) =>{
     event.preventDefault();
@@ -24,14 +34,14 @@ export const PostIdPage = () => {
     }
 
     // ! Olhar se a URL está correta
-    axios.post(`${BASE_URL}/posts/comments/${eachPost.postId}`, body, {
+    axios.post(`${BASE_URL}/post/comment/${eachPost.postId}`, body, {
       headers: {
         Authorization: token
       }
     })
     .then((res) =>{
       console.log("OK", res.data)
-      cleanFields()
+      // cleanFields()
       receberDados()
     })
     .catch((error) =>{
@@ -39,19 +49,22 @@ export const PostIdPage = () => {
     })
   }
 
+  console.log("EachPost", eachPost)
+  console.log("post", post)
+
   return (
     <>
       <StatusBar />
-      <Header title="Logout"/>
+      <Header />
       <MainPostId>
         <SectionCreatePost>
           {/* Fazer a lógica para aparecer somente o post clicado */}
-          <Post post={eachPost} />
+          <Post post={post} receberDados={receberDados} />
 
           <FormCreatePost onSubmit={sendComment}>
             <BoxText
             for="comentario"
-            name="comentario"
+            name="content"
             value={form.content}
             onChange={onChange}
             placeholder="Adicionar comentário" />
@@ -61,10 +74,16 @@ export const PostIdPage = () => {
         </SectionCreatePost>
         <Line />
         <SectionAllPost>
-            {/* !  Fazer um map de todas os comentários de Post */}
-            {/* eachPost.comments.map((comments,index)=>{
-              return <Post key={index} post={comments}/>
-            }) */}
+
+          { 
+            isLoading? (
+              <div>
+                <iframe src="https://giphy.com/embed/PUYgk3wpNk0WA" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/giphyqa-PUYgk3wpNk0WA">via GIPHY</a></p>
+              </div>
+            ) : post.comments.map((comments , index)=>{
+                return <Comment key={index} comment={comments} receberDados={receberDados} />
+              })
+          }
         </SectionAllPost>
       </MainPostId>
     </>
