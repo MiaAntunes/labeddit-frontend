@@ -13,25 +13,24 @@ import {
 import exitHeader from "../../assets/exitHeader.png";
 import { useProtectPage } from "../../hooks/useProtectPage";
 
-export const Header = () => {
+
+export const Header = (props) => {
   const navigate = useNavigate();
 
   const onClickExitPostId = () => {
     goToHomePage(navigate);
   };
 
-
   const onClickLogout = () => {
     localStorage.removeItem("token");
+    goToLogin(navigate)
   };
-
+  
+  useProtectPage();
+  
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      goToLogin(navigate);
-    }
-  }, [onClickLogout]);
+    props.receberDados();
+  }, []);
 
 
   return (

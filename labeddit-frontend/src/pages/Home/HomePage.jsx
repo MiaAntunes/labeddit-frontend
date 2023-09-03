@@ -39,19 +39,16 @@ export const HomePage = () => {
       }
     })
     .then((res) =>{
-      console.log("OK", res.data)
-      // cleanFields()
       receberDados()
     })
     .catch((error) =>{
-      console.log("error", error.data)
     })
   }
 
   return (
     <>
       <StatusBar />
-      <Header />
+      <Header receberDados={receberDados} />
       <MainHome>
         <SectionCreatePost>
           <FormCreatePost onSubmit={sendPost}>

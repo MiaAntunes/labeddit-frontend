@@ -9,7 +9,6 @@ import {
 
 export const Comment = (props) => {
   const navigate = useNavigate();
-  console.log(props)
 
   return (
     <ContainerPost>

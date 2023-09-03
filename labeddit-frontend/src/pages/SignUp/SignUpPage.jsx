@@ -34,17 +34,13 @@ export const SignUpPage = () => {
       email: form.email,
       password: form.password,
     };
-    console.log(dadosUsuario);
 
     //cadastrar os dados do User na API
     axios
       .post(`${BASE_URL}/user/signup`, dadosUsuario)
       .then((res) => {
-        console.log(res.data);
-        console.log("foi");
       })
       .catch((error) => {
-        console.log(error);
       });
   };
 

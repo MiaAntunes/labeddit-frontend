@@ -19,7 +19,6 @@ export const useRequestLike = (estadoInicial, path, token) => {
             setLike(resposta.data)
         })
         .catch((erro) => {
-            console.log(erro.response)
             setErro(erro.response)
             setIsLoading(false);
         })

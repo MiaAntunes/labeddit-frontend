@@ -4,13 +4,13 @@ export const ContainerButton = styled.div`
   display: flex;
   border-radius: 1.75rem;
   border: 0.797px solid #ececec;
-  width: 6.125rem;
+  width: 5rem;
   height: 2rem;
   overflow: hidden;
   padding: 0.5em;
   align-items: center;
   gap: 0.5em;
-  background-color: #EFEFEF;
+  background-color: #efefef;
 `;
 
 export const ButtonLikes = styled.button`
@@ -24,7 +24,13 @@ export const ButtonLikes = styled.button`
 
 export const ImgLike = styled.img``;
 
-export const TextLike = styled.p``;
+export const TextLike = styled.p`
+  color: #6f6f6f;
+  text-align: center;
+  font-family: IBM Plex Sans;
+  font-size: 0.9rem;
+  font-weight: 700;
+`;
 
 export const ButtonDeslike = styled.button`
   display: flex;

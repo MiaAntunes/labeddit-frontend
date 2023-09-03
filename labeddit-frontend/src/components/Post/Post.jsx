@@ -16,7 +16,6 @@ export const Post = (props) => {
   const navigate = useNavigate();
   const context = useContext(GlobalContext);
   const { eachPost, setEachPostId } = context;
-  console.log(props);
 
   const onClickGoToPostIdPage = (element) => {
     setEachPostId(element);

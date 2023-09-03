@@ -24,7 +24,6 @@ export const PostIdPage = () => {
   });
 
   const [post, receberDados, erro, isLoading] = useRequestData({}, `/posts/${params.id}` , token)
-  console.log(form)
 
   const sendComment = (event) =>{
     event.preventDefault();
@@ -40,22 +39,17 @@ export const PostIdPage = () => {
       }
     })
     .then((res) =>{
-      console.log("OK", res.data)
-      // cleanFields()
       receberDados()
     })
     .catch((error) =>{
-      console.log("error", error.data)
     })
   }
 
-  console.log("EachPost", eachPost)
-  console.log("post", post)
 
   return (
     <>
       <StatusBar />
-      <Header />
+      <Header receberDados={receberDados} />
       <MainPostId>
         <SectionCreatePost>
           {/* Fazer a lógica para aparecer somente o post clicado */}
