@@ -11,16 +11,15 @@ export const ButtonLike = (props) => {
 
   useEffect(()=>{
     props.receberDados()
-  },[])
+  },[likes])
   return (
     <ContainerButton>
       <ButtonLikes onClick={()=> mandarDados(true)}>
         <ImgLike src={like} alt="Button do Like" />
-        <TextLike>{props.valueLike}</TextLike>
       </ButtonLikes>
+      <TextLike>{props.valueLike}</TextLike>
       <ButtonDeslike onClick={()=> mandarDados(false)}>
         <ImgDeslike src={deslike} alt="Button do deslike" />
-        <TextDeslike>{props.valueDeslike}</TextDeslike>
       </ButtonDeslike>
     </ContainerButton>
   );

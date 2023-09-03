@@ -21,7 +21,6 @@ export const useRequestData = (estadoInicial, path, token) => {
             setDados(resposta.data)
         })
         .catch((erro) => {
-            console.log(erro.response)
             setErro(erro.response)
             setIsLoading(false);
         })

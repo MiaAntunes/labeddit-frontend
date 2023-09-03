@@ -17,5 +17,9 @@ export const ImgComment = styled.img`
 `
 
 export const TextComment = styled.p`
- 
+   color: #6f6f6f;
+  text-align: center;
+  font-family: IBM Plex Sans;
+  font-size: 0.9rem;
+  font-weight: 700;
 `

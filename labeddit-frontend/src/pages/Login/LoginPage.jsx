@@ -42,7 +42,6 @@ export const LoginPage = () => {
         goToHomePage(navigate)
       })
       .catch((error) => {
-        console.log(error)
       });
   };
 
