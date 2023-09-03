@@ -65,7 +65,7 @@ export const LoginPage = () => {
               placeholder="E-mail"
             />
             <InputForm
-              type="text"
+              type="password"
               name="password"
               id="password"
               value={form.password}
