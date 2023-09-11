@@ -33,7 +33,7 @@ export const PostIdPage = () => {
     }
 
     // ! Olhar se a URL está correta
-    axios.post(`${BASE_URL}/post/comment/${eachPost.postId}`, body, {
+    axios.post(`${BASE_URL}/post/comment/${params.id}`, body, {
       headers: {
         Authorization: token
       }
@@ -57,12 +57,12 @@ export const PostIdPage = () => {
 
           <FormCreatePost onSubmit={sendComment}>
             <BoxText
-            for="comentario"
+            for="content"
             name="content"
             value={form.content}
             onChange={onChange}
             placeholder="Adicionar comentário" />
-            <ButtonResponse>Responder</ButtonResponse>
+            <ButtonResponse type="onsubmit">Responder</ButtonResponse>
           </FormCreatePost>
 
         </SectionCreatePost>
@@ -72,7 +72,7 @@ export const PostIdPage = () => {
           { 
             isLoading? (
               <div>
-                <iframe src="https://giphy.com/embed/PUYgk3wpNk0WA" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/giphyqa-PUYgk3wpNk0WA">via GIPHY</a></p>
+                <iframe src="https://giphy.com/embed/PUYgk3wpNk0WA" width="480" height="480" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/giphyqa-PUYgk3wpNk0WA">via GIPHY</a></p>
               </div>
             ) : post.comments.map((comments , index)=>{
                 return <Comment key={index} comment={comments} receberDados={receberDados} />

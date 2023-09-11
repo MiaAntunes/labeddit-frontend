@@ -19,12 +19,15 @@ import { BASE_URL } from "../../contants/BaseUrl";
 export const HomePage = () => {
   useProtectPage()
   const token = localStorage.getItem('token')
-  
-  const [posts, receberDados, erro] = useRequestData([], '/posts', token)
+  // console.log(token)
 
   const { form, onChange, cleanFields } = useForm({
     content: ""
   });
+  
+  const [posts, receberDados, erro] = useRequestData([], '/posts', token)
+
+  console.log(form.content)
 
   const sendPost = (event) =>{
     event.preventDefault();
@@ -53,7 +56,7 @@ export const HomePage = () => {
         <SectionCreatePost>
           <FormCreatePost onSubmit={sendPost}>
             <BoxText for="content" name="content" value={form.content} onChange={onChange} placeholder="Escreva seu post..." />
-            <ButtonPostar type="submit">Postar</ButtonPostar>
+            <ButtonPostar type="onsubmit">Postar</ButtonPostar>
           </FormCreatePost>
         </SectionCreatePost>
         <Line />

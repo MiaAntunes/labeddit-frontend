@@ -29,8 +29,12 @@ export const Header = (props) => {
   useProtectPage();
   
   useEffect(() => {
-    props.receberDados();
+    if(!props.signup){
+      props.receberDados();
+    }
   }, []);
+
+
 
 
   return (
