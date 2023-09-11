@@ -20,6 +20,8 @@ import { BASE_URL } from "../../contants/BaseUrl";
 export const SignUpPage = () => {
   const navigate = useNavigate();
 
+
+
   const { form, onChange } = useForm({
     name: "",
     email: "",
@@ -47,7 +49,7 @@ export const SignUpPage = () => {
   return (
     <>
       <StatusBar />
-      <Header title="Entrar" />
+      <Header title="Entrar" signup />
       <MainSignUp>
         <TitleSignUp>Olá, boas vindas ao LabEddit ;) </TitleSignUp>
         <FormSignUp onSubmit={sendSignUp}>
@@ -93,7 +95,7 @@ export const SignUpPage = () => {
               Eu concordo em receber emails sobre coisas legais no Labeddit
             </LabelSignUp>
           </FieldsetSignUp>
-          <Button>Cadastrar</Button>
+          <Button type="onsubmit">Cadastrar</Button>
         </FormSignUp>
       </MainSignUp>
     </>

@@ -5,6 +5,7 @@ import { GlobalContext } from "./GlobalContext";
 export const GlobalState = (props) =>{
     const [eachPost, setEachPostId] = useState({})
 
+
     const context = {
         eachPost,
         setEachPostId
