@@ -26,7 +26,6 @@ export const Header = (props) => {
     goToLogin(navigate)
   };
   
-  useProtectPage();
   
   useEffect(() => {
     if(!props.signup){

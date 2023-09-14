@@ -41,6 +41,8 @@ export const SignUpPage = () => {
     axios
       .post(`${BASE_URL}/user/signup`, dadosUsuario)
       .then((res) => {
+        localStorage.setItem('token', res.data.token)
+        goToHomePage(navigate)
       })
       .catch((error) => {
       });
