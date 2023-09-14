@@ -3,7 +3,7 @@ Um website foi criado com a intenção de servir como uma plataforma de mídia s
 
 ### Prévia do Site
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](./labeddit-frontend/public/previa.png)
 
 
 ## Lista de requisitos
