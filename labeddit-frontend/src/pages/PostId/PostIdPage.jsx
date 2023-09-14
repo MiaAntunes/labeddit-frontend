@@ -29,7 +29,7 @@ export const PostIdPage = () => {
     event.preventDefault();
 
     const body = {
-      content: form.content
+      comment: form.content
     }
 
     // ! Olhar se a URL está correta

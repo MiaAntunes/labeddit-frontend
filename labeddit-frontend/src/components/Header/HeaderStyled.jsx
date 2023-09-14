@@ -6,6 +6,8 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   padding: 0.5em 1.5em;
   background: #ededed;
+
+  
 `;
 
 export const ButtonExit = styled.button`

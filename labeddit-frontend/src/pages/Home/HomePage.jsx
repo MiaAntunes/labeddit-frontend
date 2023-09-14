@@ -19,7 +19,6 @@ import { BASE_URL } from "../../contants/BaseUrl";
 export const HomePage = () => {
   useProtectPage()
   const token = localStorage.getItem('token')
-  // console.log(token)
 
   const { form, onChange, cleanFields } = useForm({
     content: ""
@@ -27,7 +26,7 @@ export const HomePage = () => {
   
   const [posts, receberDados, erro] = useRequestData([], '/posts', token)
 
-  console.log(form.content)
+
 
   const sendPost = (event) =>{
     event.preventDefault();
