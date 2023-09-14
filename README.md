@@ -1,5 +1,5 @@
 # Labeddit Frontend
-Um website foi criado com a intenção de servir como uma plataforma de mídia social dedicada à postagem de perguntas e dúvidas, possibilitando aos usuários a interação através de curtidas e comentários em cada publicação.
+Foi desenvolvido um website com a finalidade de se tornar uma rede social onde os usuários podem postar perguntas ou dúvidas, além de interagir por meio de curtidas e comentários em cada postagem. O design desse website foi concebido com uma abordagem "mobile-first", priorizando a experiência dos usuários em dispositivos móveis.
 
 ### Prévia do Site
 
