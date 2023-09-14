@@ -1,6 +1,9 @@
 # Labeddit Frontend
 Foi desenvolvido um website com a finalidade de se tornar uma rede social onde os usuários podem postar perguntas ou dúvidas, além de interagir por meio de curtidas e comentários em cada postagem. O design desse website foi concebido com uma abordagem "mobile-first", priorizando a experiência dos usuários em dispositivos móveis.
 
+### Repositório do Labeddit Backend
+[Link para o repositório](https://github.com/MiaAntunes/labeddit-backend)
+
 ### Prévia do Site
 
 ![App Screenshot](./labeddit-frontend/public/previa.png)
